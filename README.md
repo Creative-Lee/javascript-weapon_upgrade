@@ -283,10 +283,11 @@ const UpgradeUtils = {
 };
 ```
 
-### MiniGameRandomNumberGenerator 객체
+### generateMiniGameNumber 함수
 
-- 미니 게임에 필요한 Random 값 추출은 제공된 `MiniGameRandomNumberGenerator`의 `generate()`를 활용한다.
-- `MiniGameRandomNumberGenerator`의 코드는 변경할 수 없다.
+- 미니 게임에 필요한 Random 값 추출은 제공된 `generateMiniGameNumber` 함수를 활용한다.
+- `generateMiniGameNumber` 파일을 수정할 수 있다. 단, `generateMiniGameNumber` 함수의 코드는 변경할 수 없다.
+- `generateMiniGameNumber` 파일 경로는 변경할 수 있다.
 
 ### 라이브러리
 
