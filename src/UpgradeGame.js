@@ -10,13 +10,17 @@ class UpgradeGame {
 
   getCurrentProbabilty({ gameType, isMatched }) {
     const toNextGrade = 1;
-    const increasedProbability = INCREASE_PROBABILITY[gameType];
+    let totalProbability = PROBABILITY[this.#grade + toNextGrade];
 
     if (isMatched) {
-      return PROBABILITY[this.#grade + toNextGrade] + increasedProbability;
+      totalProbability += INCREASE_PROBABILITY[gameType];
+
+      if (totalProbability > 100) {
+        return 100;
+      }
     }
 
-    return PROBABILITY[this.#grade + toNextGrade];
+    return totalProbability;
   }
 
   hasUpgraded(currentProbability) {

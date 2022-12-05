@@ -75,11 +75,16 @@ class GameController {
     const probabilty = this.#upgradeGame.getCurrentProbabilty(miniGameResult);
     const hasUpgraded = this.#upgradeGame.hasUpgraded(probabilty);
 
+    OutputView.printUpgradeResult(hasUpgraded, probabilty);
+
     if (hasUpgraded) {
       this.#upgradeGame.upgrade();
+      OutputView.printGrade(this.#upgradeGame.getGrade());
+      this.#requestChallengeCommand();
+      return;
     }
 
-    OutputView.printUpgradeResult(hasUpgraded, probabilty);
+    this.#quit();
   }
 
   #quit() {
