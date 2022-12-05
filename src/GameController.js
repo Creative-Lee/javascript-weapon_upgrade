@@ -2,6 +2,7 @@ const InputView = require("./views/InputView.js");
 const OutputView = require("./views/OutputView.js");
 const UpgradeGame = require("./UpgradeGame.js");
 const Validation = require("./Validation.js");
+const tryCatchHandler = require("./utils/tryCatchHandler.js");
 
 class GameController {
   #upgradeGame;
@@ -18,7 +19,12 @@ class GameController {
   }
 
   #requestChallengeCommand() {
-    InputView.readChallengeCommand(this.#runChallengeCommand.bind(this));
+    InputView.readChallengeCommand((command) => {
+      tryCatchHandler(
+        () => this.#runChallengeCommand(command),
+        () => this.#requestChallengeCommand()
+      );
+    });
   }
 
   #runChallengeCommand(command) {
