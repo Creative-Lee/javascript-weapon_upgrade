@@ -54,7 +54,7 @@ describe("강화 게임 테스트", () => {
 
     const log = getOutput(logSpy);
     expectLogContains(log, [
-      "홀짝 맞추기 성공!",
+      "홀/짝 맞추기 성공!",
       "강화 성공! (강화 확률 90%)",
       "숫자 맞추기 성공!",
       "강화 성공! (강화 확률 100%)",
@@ -72,7 +72,7 @@ describe("강화 게임 테스트", () => {
 
     const log = getOutput(logSpy);
     expectLogContains(log, [
-      "홀짝 맞추기 실패!",
+      "홀/짝 맞추기 실패!",
       "강화 실패! (강화 확률 80%)",
       "최종 강화 결과: +0강",
     ]);
