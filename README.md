@@ -61,7 +61,7 @@ npm test
   - 숫자 맞추기는 범위내의 숫자 1개를, 홀/짝 맞추기는 홀: O 짝: E 를 입력한다.
   - 숫자를 맞추면, **현재 진행중인 강화의 성공 확률이 50% 증가된다.**
   - 홀수/짝수 여부를 맞추면 **현재 진행중인 강화의 성공 확률이 10% 증가된다.**
-  - 강화 확률 조정 후 100%를 초과하면, 100%로 계산 및 표기 한다.
+  - 강화 확률 조정 후 100%를 초과하면, 100% 표기 한다.
 
 - 미니 게임의 결과를 출력한다.
 
@@ -227,7 +227,7 @@ app.play();
   - 함수(또는 메서드)가 한 가지 일만 잘하도록 구현한다.
 - 메서드의 파라미터 개수는 최대 3개까지만 허용한다.
 
-- 아래 있는 `InputView`, `OutputView`, `UpgradeGame` 클래스(또는 객체)의 요구사항을 참고하여 구현한다.
+- 아래 있는 `InputView`, `OutputView`, `UpgradeGame`, `UpgradeUtils` , `MiniGameRandomNumberGenerator` 클래스(또는 객체)의 요구사항을 참고하여 구현한다.
   - 각 클래스(또는 객체)의 제약 사항은 아래 클래스별 세부 설명을 참고한다.
   - 이외 필요한 클래스(또는 객체)와 메서드는 자유롭게 구현할 수 있다.
   - `InputView` 에서만 `MissionUtils`의 `Console.readLine()` 을 이용해 사용자의 입력을 받을 수 있다.
@@ -267,6 +267,20 @@ const OutputView = {};
 
 ```javascript
 class UpgradeGame {}
+```
+
+### UpgradeUtils 객체
+
+- 제공된 `UpgradeUtils` 객체의 메서드를 활용해 구현해야 한다.
+- `UpgradeUtils`의 코드는 변경할 수 없다.
+- `UpgradeUtils`의 파일 경로는 변경할 수 없다.
+
+```javascript
+const UpgradeUtils = {
+  getProbabilityTable(probability) {},
+
+  isUpgraded(probability) {},
+};
 ```
 
 ### MiniGameRandomNumberGenerator 객체
