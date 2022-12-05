@@ -12,6 +12,12 @@ class GameController {
   start() {
     OutputView.printStartMsg();
     OutputView.printGrade(this.#upgradeGame.getGrade());
+
+    this.#requestChallengeCommand();
+  }
+
+  #requestChallengeCommand() {
+    InputView.readChallengeCommand((command) => {});
   }
 }
 
