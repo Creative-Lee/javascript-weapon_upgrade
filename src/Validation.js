@@ -17,14 +17,14 @@ class Validation {
   }
 
   static validateMiniGameInput(input) {
-    const type = typeChecker(input);
+    const gameType = typeChecker(input);
     const commands = [COMMAND.odd, COMMAND.even];
 
     if (!Validation.#isValidLength(input)) {
       throw new Error(ERROR_MSG.invalidMiniGameInputLength);
     }
 
-    if (type === "string" && !commands.includes(input)) {
+    if (gameType === "command" && !commands.includes(input)) {
       throw new Error(ERROR_MSG.invalidMiniGameCommand);
     }
   }
