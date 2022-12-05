@@ -5,6 +5,10 @@ const GAME_MSG = Object.freeze({
   currentGrade(grade) {
     return `\n현재 강화 등급: +${grade}강`;
   },
+
+  finalResult(grade) {
+    return `\n최종 강화 결과: +${grade}강`;
+  },
 });
 
 const OutputView = {
@@ -14,6 +18,10 @@ const OutputView = {
 
   printGrade(grade) {
     Console.print(GAME_MSG.currentGrade(grade));
+  },
+
+  printFinalResult(grade) {
+    Console.print(GAME_MSG.finalResult(grade));
   },
 };
 
