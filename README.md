@@ -142,7 +142,7 @@ Y
 미니 게임을 위한 숫자 또는 홀/짝 커맨드를 입력해주세요. (숫자: 0 ~ 9 사이의 수, 홀: O, 짝: E)
 O
 
-미니 게임 랜덤 수: 5 --> 홀짝 맞추기 성공! 강화 확률 10% 증가!
+미니 게임 랜덤 수: 5 --> 홀/짝 맞추기 성공! 강화 확률 10% 증가!
 
 강화 성공! (강화 확률 90%)
 
@@ -227,7 +227,7 @@ app.play();
   - 함수(또는 메서드)가 한 가지 일만 잘하도록 구현한다.
 - 메서드의 파라미터 개수는 최대 3개까지만 허용한다.
 
-- 아래 있는 `InputView`, `OutputView`, `UpgradeGame`, `UpgradeUtils` , `MiniGameRandomNumberGenerator` 클래스(또는 객체)의 요구사항을 참고하여 구현한다.
+- 아래 있는 `InputView`, `OutputView`, `UpgradeGame`, `UpgradeUtils` , `generateMiniGameNumber` 클래스(또는 객체)의 요구사항을 참고하여 구현한다.
   - 각 클래스(또는 객체)의 제약 사항은 아래 클래스별 세부 설명을 참고한다.
   - 이외 필요한 클래스(또는 객체)와 메서드는 자유롭게 구현할 수 있다.
   - `InputView` 에서만 `MissionUtils`의 `Console.readLine()` 을 이용해 사용자의 입력을 받을 수 있다.
