@@ -4,6 +4,7 @@ const UpgradeGame = require("./UpgradeGame.js");
 const Validation = require("./Validation.js");
 const MiniGame = require("./MiniGame.js");
 const tryCatchHandler = require("./utils/tryCatchHandler.js");
+const generateMiniGameNumber = require("./utils/generateMiniGameNumber.js");
 const { COMMAND } = require("./constants/condition.js");
 const { Console } = require("@woowacourse/mission-utils");
 
@@ -40,8 +41,15 @@ class GameController {
     }
 
     if (command === COMMAND.challenge) {
-      this.#requestMiniGameInput();
+      this.#miniGamePhase();
     }
+  }
+
+  #miniGamePhase() {
+    const number = generateMiniGameNumber();
+    this.#upgradeGame.initMiniGameNumber(number);
+
+    this.#requestMiniGameInput();
   }
 
   #requestMiniGameInput() {
