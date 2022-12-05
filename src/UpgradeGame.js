@@ -14,13 +14,9 @@ class UpgradeGame {
 
     if (isMatched) {
       totalProbability += INCREASE_PROBABILITY[gameType];
-
-      if (totalProbability > 100) {
-        return 100;
-      }
     }
 
-    return totalProbability;
+    return totalProbability > 100 ? 100 : totalProbability;
   }
 
   hasUpgraded(currentProbability) {
