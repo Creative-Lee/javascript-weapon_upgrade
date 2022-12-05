@@ -3,6 +3,7 @@ const { INCREASE_PROBABILITY } = require("../constants/condition.js");
 
 const GAME_MSG = Object.freeze({
   start: "무기 강화 게임을 시작합니다.",
+
   currentGrade(grade) {
     return `\n현재 강화 등급: +${grade}강`;
   },
@@ -11,7 +12,7 @@ const GAME_MSG = Object.freeze({
     return `\n최종 강화 결과: +${grade}강`;
   },
 
-  MiniGameResult(gameType, isMatched, gameNumber) {
+  miniGameResult(gameType, isMatched, gameNumber) {
     const gameTypeTitle = gameType === "number" ? "숫자" : "홀/짝";
     const increasedProbabilityTemplate = isMatched
       ? `강화 확률 ${INCREASE_PROBABILITY[gameType]}% 증가!`
@@ -22,6 +23,10 @@ const GAME_MSG = Object.freeze({
       `맞추기 ${isMatched ? "성공" : "실패"}! ` +
       increasedProbabilityTemplate
     );
+  },
+
+  upgradeResult(hasUpgraded, probabilty) {
+    return `강화 ${hasUpgraded ? "성공" : "실패"}! (강화 확률 ${probabilty}%)`;
   },
 });
 
@@ -39,7 +44,11 @@ const OutputView = {
   },
 
   printMiniGameResult({ gameType, isMatched, gameNumber }) {
-    Console.print(GAME_MSG.MiniGameResult(gameType, isMatched, gameNumber));
+    Console.print(GAME_MSG.miniGameResult(gameType, isMatched, gameNumber));
+  },
+
+  printUpgradeResult(hasUpgraded, probabilty) {
+    Console.print(GAME_MSG.upgradeResult(hasUpgraded, probabilty));
   },
 };
 

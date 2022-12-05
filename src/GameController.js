@@ -66,8 +66,20 @@ class GameController {
     Validation.validateMiniGameInput(input);
 
     const miniGameResult = this.#miniGame.getMiniGameResult(input);
-
     OutputView.printMiniGameResult(miniGameResult);
+
+    this.#upgradePhase(miniGameResult);
+  }
+
+  #upgradePhase(miniGameResult) {
+    const probabilty = this.#upgradeGame.getCurrentProbabilty(miniGameResult);
+    const hasUpgraded = this.#upgradeGame.hasUpgraded(probabilty);
+
+    if (hasUpgraded) {
+      this.#upgradeGame.upgrade();
+    }
+
+    OutputView.printUpgradeResult(hasUpgraded, probabilty);
   }
 
   #quit() {
