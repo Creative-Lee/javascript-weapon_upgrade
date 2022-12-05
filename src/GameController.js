@@ -2,6 +2,7 @@ const InputView = require("./views/InputView.js");
 const OutputView = require("./views/OutputView.js");
 const UpgradeGame = require("./UpgradeGame.js");
 const Validation = require("./Validation.js");
+const MiniGame = require("./MiniGame.js");
 const tryCatchHandler = require("./utils/tryCatchHandler.js");
 const { COMMAND } = require("./constants/condition.js");
 const { Console } = require("@woowacourse/mission-utils");
@@ -10,7 +11,8 @@ class GameController {
   #upgradeGame;
 
   constructor() {
-    this.#upgradeGame = new UpgradeGame();
+    const miniGame = new MiniGame();
+    this.#upgradeGame = new UpgradeGame(miniGame);
   }
 
   start() {
@@ -34,7 +36,16 @@ class GameController {
 
     if (command === COMMAND.quit) {
       this.#quit();
+      return;
     }
+
+    if (command === COMMAND.challenge) {
+      this.#requestMiniGameInput();
+    }
+  }
+
+  #requestMiniGameInput() {
+    InputView.readMiniGameInput((input) => {});
   }
 
   #quit() {
