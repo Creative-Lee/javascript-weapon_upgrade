@@ -53,7 +53,11 @@ class GameController {
   }
 
   #requestMiniGameInput() {
-    InputView.readMiniGameInput((input) => {});
+    InputView.readMiniGameInput(this.#processMiniGame.bind(this));
+  }
+
+  #processMiniGame(input) {
+    Validation.validateMiniGameInput(input);
   }
 
   #quit() {

@@ -1,6 +1,8 @@
 const COMMAND = {
   challenge: "Y",
   quit: "N",
+  odd: "O",
+  even: "E",
 };
 
 const MINI_GAME_NUM = {
