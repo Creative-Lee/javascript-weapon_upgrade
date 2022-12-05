@@ -1,6 +1,5 @@
 const MissionUtils = require("@woowacourse/mission-utils");
 const App = require("../src/App");
-const BridgeMaker = require("../src/BridgeMaker");
 
 const mockQuestions = (answers) => {
   MissionUtils.Console.readLine = jest.fn();
@@ -44,41 +43,39 @@ const expectLogContains = (received, logs) => {
   });
 };
 
-const expectBridgeOrder = (received, upside, downside) => {
-  const upsideIndex = received.indexOf(upside);
-  const downsideIndex = received.indexOf(downside);
-
-  expect(upsideIndex).toBeLessThan(downsideIndex);
-};
-
-describe("다리 건너기 테스트", () => {
-  test("다리 생성 테스트", () => {
-    const randomNumbers = [1, 0, 0];
-    const mockGenerator = randomNumbers.reduce((acc, number) => {
-      return acc.mockReturnValueOnce(number);
-    }, jest.fn());
-
-    const bridge = BridgeMaker.makeBridge(3, mockGenerator);
-    expect(bridge).toEqual(["U", "D", "D"]);
-  });
-
-  test("기능 테스트", () => {
+describe("강화 게임 테스트", () => {
+  test("게임 성공 테스트", () => {
     const logSpy = getLogSpy();
-    mockRandoms([2, 4]);
-    mockQuestions(["Y", "E", "Y", "4"]);
+    mockRandoms([2, 0, 4, 0]);
+    mockQuestions(["Y", "E", "Y", "4", "N"]);
 
     const app = new App();
     app.play();
 
     const log = getOutput(logSpy);
     expectLogContains(log, [
-      "최종 게임 결과",
-      "[ O |   | O ]",
-      "[   | O |   ]",
-      "게임 성공 여부: 성공",
-      "총 시도한 횟수: 1",
+      "홀짝 맞추기 성공!",
+      "강화 성공! (강화 확률 90%)",
+      "숫자 맞추기 성공!",
+      "강화 성공! (강화 확률 100%)",
+      "최종 강화 결과: +2강",
     ]);
-    expectBridgeOrder(log, "[ O |   | O ]", "[   | O |   ]");
+  });
+
+  test("게임 실패 테스트", () => {
+    const logSpy = getLogSpy();
+    mockRandoms([1, 99]);
+    mockQuestions(["Y", "E"]);
+
+    const app = new App();
+    app.play();
+
+    const log = getOutput(logSpy);
+    expectLogContains(log, [
+      "홀짝 맞추기 실패!",
+      "강화 실패! (강화 확률 80%)",
+      "최종 강화 결과: +0강",
+    ]);
   });
 
   test("예외 테스트", () => {
