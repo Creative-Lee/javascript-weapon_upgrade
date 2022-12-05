@@ -64,8 +64,8 @@ describe("다리 건너기 테스트", () => {
 
   test("기능 테스트", () => {
     const logSpy = getLogSpy();
-    mockRandoms([1, 0, 1]);
-    mockQuestions(["3", "U", "D", "U"]);
+    mockRandoms([2, 4]);
+    mockQuestions(["Y", "E", "Y", "4"]);
 
     const app = new App();
     app.play();

@@ -1,21 +1,9 @@
-/**
- * 사용자로부터 입력을 받는 역할을 한다.
- */
 const InputView = {
-  /**
-   * 다리의 길이를 입력받는다.
-   */
-  readBridgeSize() {},
+  // 강화 도전 여부
+  readUpgradeCommand() {},
 
-  /**
-   * 사용자가 이동할 칸을 입력받는다.
-   */
-  readMoving() {},
-
-  /**
-   * 사용자가 게임을 다시 시도할지 종료할지 여부를 입력받는다.
-   */
-  readGameCommand() {},
+  // 미니 게임 숫자 혹은 커맨드
+  readMiniGameInput() {},
 };
 
 module.exports = InputView;
