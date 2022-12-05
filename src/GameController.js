@@ -10,10 +10,11 @@ const { Console } = require("@woowacourse/mission-utils");
 
 class GameController {
   #upgradeGame;
+  #miniGame;
 
   constructor() {
-    const miniGame = new MiniGame();
-    this.#upgradeGame = new UpgradeGame(miniGame);
+    this.#upgradeGame = new UpgradeGame();
+    this.#miniGame = new MiniGame();
   }
 
   start() {
@@ -47,7 +48,7 @@ class GameController {
 
   #miniGamePhase() {
     const number = generateMiniGameNumber();
-    this.#upgradeGame.initMiniGameNumber(number);
+    this.#miniGame.setNumber(number);
 
     this.#requestMiniGameInput();
   }
@@ -55,14 +56,18 @@ class GameController {
   #requestMiniGameInput() {
     InputView.readMiniGameInput((input) => {
       tryCatchHandler(
-        () => this.#processMiniGame(input),
+        () => this.#playMiniGame(input),
         () => this.#requestMiniGameInput()
       );
     });
   }
 
-  #processMiniGame(input) {
+  #playMiniGame(input) {
     Validation.validateMiniGameInput(input);
+
+    const miniGameResult = this.#miniGame.getMiniGameResult(input);
+
+    OutputView.printMiniGameResult(miniGameResult);
   }
 
   #quit() {

@@ -1,4 +1,5 @@
 const { COMMAND } = require("./constants/condition.js");
+const typeChecker = require("./utils/typeChecker.js");
 
 const ERROR_MSG = Object.freeze({
   invalidChallengeCommand: "[ERROR] 잘못된 도전 커멘드입니다.",
@@ -16,7 +17,7 @@ class Validation {
   }
 
   static validateMiniGameInput(input) {
-    const type = Validation.#typeChecker(input);
+    const type = typeChecker(input);
     const commands = [COMMAND.odd, COMMAND.even];
 
     if (!Validation.#isValidLength(input)) {
@@ -30,14 +31,6 @@ class Validation {
 
   static #isValidLength(input) {
     return input.length === 1;
-  }
-
-  static #typeChecker(input) {
-    if (Number.isInteger(parseInt(input))) {
-      return "number";
-    }
-
-    return "string";
   }
 }
 

@@ -1,17 +1,11 @@
+const { isUpgraded } = require("./utils/UpgradeUtils.js");
+
 class UpgradeGame {
   #grade = 0;
-  #miniGame;
-
-  constructor(miniGame) {
-    this.#miniGame = miniGame;
-  }
+  #currentProbability;
 
   getGrade() {
     return this.#grade;
-  }
-
-  initMiniGameNumber(number) {
-    this.#miniGame.setNumber(number);
   }
 }
 
